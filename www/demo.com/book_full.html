@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" class="js">
+<head>
+<title>Bienvenido</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="shortcut icon" href="images/favicon.ico">
+<!--[if (!IE)|(gte IE 8)]><!-->
+<link href="viewer/viewer-datauri.css" media="screen" rel="stylesheet" type="text/css"/>
+<!--<![endif]-->
+<!--[if lte IE 7]>
+    <link href="viewer/viewer.css" media="screen" rel="stylesheet" type="text/css" />
+  <![endif]-->
+<link href="viewer/printviewer.css" media="print" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="js/mootools-1.3.2.js"></script>
+<script type="text/javascript" src="js/mootools-get.js"></script>
+<script type="text/javascript" src="pajax/pajax_library.js"></script>
+<script type="text/javascript" src="pajax/pajax_import.php?Login"></script>
+<script type="text/javascript" src="pajax/pajax_import.php?Book"></script>
+<script src="viewer/viewer.js"></script>
+<script>
+      window.DV.recordHit = "viewer/pixel.gif";
+</script>
+<style>
+        html.js {
+                display: none;
+        }
+</style>
+<meta name="csrf-param" content="authenticity_token"/>
+<meta name="csrf-token" content="fwGrXngs9yaNkPzc62ny5nHv8UFKNZyB4RibT41jCjo="/>
+</head>
+
+<body style="margin:0; padding:0;">
+<script>
+        var loginListener = new LoginListener();
+        var login = new Login(loginListener);
+        var bookListener = new BookListener();
+        var book = new Book(bookListener);
+
+        function updateState(r){
+                if(r=="0")
+                        window.location = "index.html";
+                else
+			loadBook();
+	}
+
+	function loadBook() {
+		var id = $get().id;
+		if(id == undefined)
+			window.location = "main.html";
+		else {
+			book.getbook(id);
+               		$$('html').removeClass('js');
+		}
+	}
+
+	function getBook(r) {
+		if(r == "null") {
+			alert("Ops! surgió un problema");
+			window.location = "books_all.html";
+		} else {
+		var docUrl = JSON.decode(r);
+		window.currentDocument = DV.load(docUrl, {
+	    		container: '#viewer'
+		});
+		}
+	}
+
+        loginListener.onChkstate = updateState;
+        bookListener.onGetbook = getBook;
+        login.chkstate();
+</script>
+
+<article id="viewer">
+</article>
+<article id="overlay">
+</article>
+
+</body>
+</html>
+

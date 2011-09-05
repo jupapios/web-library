@@ -1,0 +1,355 @@
+/* CSS aside */
+
+aside.loading {
+	width: 32px;
+	height: 32px;
+	background-image:url('../images/loader.gif');
+	background-repeat:no-repeat;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+A:link {text-decoration: none}
+A:visited {text-decoration: none}
+A:active {text-decoration: none}
+
+/* CSS main - content */
+
+section.main {
+        width:85%;
+        padding:10px 10px 10px 10px;
+
+        margin-left:auto;
+        margin-right:auto;
+
+}
+	
+section.main header.tab {
+	
+}
+
+section.main header.tab ul {
+	list-style:none;
+}
+
+
+section.main header.tab ul li {
+	margin: 0 5px 0 0;
+	background-color: #f4f4ee;
+        padding:8px 32px 5px 33px;
+        float:left;
+        cursor:pointer;
+        font:normal 18px Arial,sans-serif;
+
+        -moz-border-radius-topleft: 6px;
+        -webkit-border-top-left-radius: 6px;
+        border-top-left-radius: 6px;
+
+        -moz-border-radius-topright: 6px;
+        -webkit-border-top-right-radius: 6px;
+        border-top-right-radius: 6px;
+	
+}
+
+section.main header.tab ul li.active {
+        background-color:#e6e6dc !important;
+}
+
+section.main header.tab ul li.active a {
+        color:#2b88c2;
+}
+
+section.main article.content {
+	position:relative;
+        background-color:#e6e6dc;
+        font:14px arial,sans-serif;
+
+        -moz-box-shadow: 2px 4px 3px #666;
+        -webkit-box-shadow: 2px 4px 3px #666;
+        box-shadow: 2px 4px 3px #666;
+
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+        border-radius: 6px;
+
+	-moz-border-radius-topleft: 0;
+	-webkit-border-top-left-radius: 0;
+	border-top-left-radius: 0;
+	
+	margin-top:34px;
+	padding: 15px 20px 15px 20px;
+	
+}
+
+/* CSS menu */
+
+section#top {
+        height:85px;
+}
+
+section#top article#menu {
+	position:absolute;
+	right:30px;
+        background-color:#172322;
+	height:50px;
+	width:550px;	
+
+        -moz-border-radius-bottomleft: 14px;
+        -webkit-border-bottom-left-radius: 14px;
+        border-bottom-left-radius: 14px;
+	
+        -moz-border-radius-bottomright: 14px;
+        -webkit-border-bottom-right-radius: 14px;
+        border-bottom-right-radius: 14px;
+
+	color:#fff;	
+}
+
+section#top article#menu ul {
+        padding:0;
+        margin:0;
+        list-style:none;
+        z-index:999999;
+}
+section#top article#menu li {
+        cursor:pointer;
+        float:left;
+        position:relative;
+	font:11px Verdana;
+        padding:16px 18px 4px 18px;
+        /* padding:16px 18px 21px 18px;*/
+	margin-left:auto;
+	margin-right:auto;
+}
+
+section#top article#menu li a {
+	color:#fff;
+}
+section#top article#menu li a:hover {
+	color:#b0d730;
+}
+section#top article#menu img#menudo_portrait {
+        z-index:1999999;
+        position:absolute;
+        top:8px;
+        border:3px solid #77d4fd;
+        height:24px;
+        width:24px;
+        vertical-align:middle;
+}
+
+section#top article#menu input.field {
+	position:absolute;
+	top:15px;
+	border: 0;
+	height:18px;
+        padding:3px 0px 0px 3px;
+        margin:1px 0 0 4px;
+        font:normal 12px arial,sans-serif;
+        color:#969696;
+        width:142px;
+
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+        border-radius: 6px;
+}
+section#top article#menu div.menu_image {
+        background-image:url('/images/search.png');
+	width:173px;
+	height:25px;
+}
+
+/* menu*/
+
+section#top article#menu ul.parentmenu ul{   
+	display:none;
+	list-style:none;
+}
+
+section#top article#menu ul.parentmenu li:hover > ul {
+	display:block;
+}
+
+ul.parentmenu {
+	list-style:none;
+}
+
+ul.parentmenu li {
+	position:relative;
+	/*width:50px;*/
+}
+
+
+ul.parentmenu ul {
+   position:absolute; /* Esta posición es relativa al <li> que contiene a este <ul> */
+   left:30px; /* Para que no monte sobre el <li> */
+   top:-1px;
+   display:none;
+   list-style:none;
+}
+ul.parentmenu li:hover > ul {
+   display:block;
+}
+
+ul.parentmenu> li > ul {
+   position:absolute;
+   left:0px;
+   top:34px;
+   display:none;
+   list-style:none;
+   /*width:120px;*/
+}
+ul.parentmenu > li {
+   display:inline;
+}
+
+ul.childmenu {
+	background-color:#172322;
+	
+        -moz-border-radius-bottomleft: 14px;
+        -webkit-border-bottom-left-radius: 14px;
+        border-bottom-left-radius: 14px;
+	
+        -moz-border-radius-bottomright: 14px;
+        -webkit-border-bottom-right-radius: 14px;
+        border-bottom-right-radius: 14px;
+}
+
+ul.childmenu>li{
+	padding:2px;	
+	height:3px;
+}
+
+ul.parentmenu>li >ul#first{
+	width:100px;
+	left:-36px;
+}
+
+/* CSS - Modo Lectura */
+
+a.readmode {
+	text-align:right;
+}
+
+/* CSS - Slider */
+
+section#notes {
+	position:absolute;
+}
+
+article#slider {
+        width: 250px;
+        height: 500px;
+        background-color: rgba(0, 0, 0, 0.5);
+        -moz-border-radius-topright: 14px;
+        -webkit-border-top-right-radius: 14px;
+        -o-border-top-right-radius: 14px;
+        border-top-right-radius: 14px;
+
+        -moz-border-radius-bottomright: 14px;
+        -webkit-border-bottom-right-radius: 14px;
+        -o-border-bottom-right-radius: 14px;
+        border-bottom-right-radius: 14px;
+	padding:15px 5px 5px 5px;
+}
+
+section#notes article#slider textarea {
+	resize:none;
+	font:normal 14px/14px 'CalligraffitiRegular',arial,sans-serif;
+}
+
+section#notes article#slider div#listnotes {
+	overflow: auto;
+	font:normal 14px/14px 'CalligraffitiRegular',arial,sans-serif;
+}
+
+
+section#notes article#slider div#listnotes ul {
+	margin:3px;
+	cursor:pointer;	
+}
+
+aside#slidebutton {
+	font:bold 16px/16px 'CalligraffitiRegular',arial,sans-serif;
+	padding-top:8px;
+
+	cursor:pointer;
+        position:fixed;
+	z-index:999999;
+	top:150px;
+	left:-33px;
+	text-align:center;
+
+        border:1px solid #ccc;
+	width:100px;
+	height:22px;
+	background-color:rgba(255,255,255,0.8);
+
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+
+	
+        -moz-box-shadow: 2px -4px 3px #666;
+        -webkit-box-shadow: 2px -4px 3px #666;
+        box-shadow: 2px -4px 3px #666;
+
+        -webkit-border-radius:6px;
+        -moz-border-radius:6px;
+        -o-border-radius:6px;
+        border-radius:6px;
+	
+}
+/* CSS Twitter news */
+
+#news {
+	width:70%;
+	border:1px solid #ccc;
+	background-color: rgba(255,255,255,0.5);
+
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	-o-border-radius:10px;
+	border-radius:10px;
+}
+
+.post {
+	padding:5px 10px 5px 80px;
+	min-height:65px;
+	border-bottom:1px solid #ccc;
+	background:url(http://www.escuelaunidadeditorial.es/wp-content/themes/suffusion/images/follow/Twitter-08.png) 5px 5px no-repeat;
+	cursor:pointer;
+}
+
+.post:hover {
+	background-color:lightblue;
+}
+
+a.post-title {
+	font-weight:bold;
+	font-size:12px;
+	text-decoration:none;
+}
+
+a.post-title:hover {
+	text-decoration:underline;
+	color:#900;
+}
+
+a.post-more {
+	color:#900;
+}
+
+p.post-content {
+	font-size:10px;
+	line-height:17px;
+	padding-bottom:0;
+}
+
+article#news ul {
+	list-style:none;
+	padding:0;
+}
+

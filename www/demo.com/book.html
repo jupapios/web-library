@@ -1,0 +1,243 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" class="js">
+<head>
+<title>Bienvenido</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="shortcut icon" href="images/favicon.ico">
+<link rel="stylesheet" type="text/css" media="all" href="css/main.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="css/body.css"/>
+<!--[if lt IE 9]>
+        	<script type="text/javascript">window.location="error.html";</script>
+<![endif]-->
+<!--[if (!IE)|(gte IE 8)]><!-->
+<link href="viewer/viewer-datauri.css" media="screen" rel="stylesheet" type="text/css"/>
+<!--<![endif]-->
+<!--[if lte IE 7]>
+    <link href="viewer/viewer.css" media="screen" rel="stylesheet" type="text/css" />
+  <![endif]-->
+<link href="viewer/printviewer.css" media="print" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="js/mootools-1.3.2.js"></script>
+<script type="text/javascript" src="js/mootools-get.js"></script>
+<script type="text/javascript" src="js/mootools-slide.js"></script>
+<script type="text/javascript" src="js/min.js"></script>
+<script type="text/javascript" src="pajax/pajax_library.js"></script>
+<script type="text/javascript" src="pajax/pajax_import.php?Login"></script>
+<script type="text/javascript" src="pajax/pajax_import.php?Menu"></script>
+<script type="text/javascript" src="pajax/pajax_import.php?Book"></script>
+<script src="viewer/viewer.js"></script>
+
+<style>
+	html.js {
+		display: none;
+	}
+
+	#book {
+	        width:100%;
+	        border:1px solid #ccc;
+	        background-color: rgba(255,255,255,0.5);
+	
+	        -webkit-border-radius:10px;
+	        -moz-border-radius:10px;
+	        -o-border-radius:10px;
+	        border-radius:10px;
+	}
+
+section#notes {
+	z-index:9999999;
+	top:0;
+}
+
+article#slider {
+        position:fixed;
+        top:225px;
+}
+textarea#note {
+        width:90%;
+        height:300px;
+        border:1px solid #ccc;
+        background-color: rgba(255,255,255,0.8);
+
+        -webkit-border-radius:5px;
+        -moz-border-radius:5px;
+        -o-border-radius:5px;
+        border-radius:5px;
+
+        padding: 5px;
+}
+
+#listnotes {
+        width:90%;
+        height:150px;
+        border:1px solid #ccc;
+        background-color: rgba(255,255,255,0.9);
+
+        -webkit-border-radius:5px;
+        -moz-border-radius:5px;
+        -o-border-radius:5px;
+        border-radius:5px;
+
+        padding: 5px;
+}
+
+</style>
+<script>
+      window.DV.recordHit = "viewer/pixel.gif";
+</script>
+<meta name="csrf-param" content="authenticity_token"/>
+<meta name="csrf-token" content="fwGrXngs9yaNkPzc62ny5nHv8UFKNZyB4RibT41jCjo="/>
+</head>
+
+<body>
+<script>
+	var mySlide;
+	window.addEvent('domready', function(){
+        	mySlide = new Fx.Slide('slider', {mode: 'horizontal'});
+        
+		$('slidebutton').addEvent('click', function(ev) {
+			mySlide.toggle();
+		});
+
+        }); 
+	var loginListener = new LoginListener();
+	var login = new Login(loginListener);
+	var menuListener = new MenuListener();
+	var menu = new Menu(menuListener);
+        var bookListener = new BookListener();
+        var book = new Book(bookListener);
+	
+	var id;
+
+	function updateState(r){
+	        if(r=="0")
+	                window.location = "index.html";
+	        else
+			menu.getmenu();
+	}
+	function setMenu(r){
+	        $('menu').set('html', r);
+		loadBook();
+	}
+        function loadBook() {
+                id = $get().id;
+                if(id == undefined)
+                        window.location = "main.html";
+                else {
+                        book.getbook(id);
+                        $$('html').removeClass('js');
+                }
+        }
+        function getBook(r) {
+                if(r == "null") {
+                        alert("Ops! surgió un problema");
+                        window.location = "books_all.html";
+                } else {
+                var docUrl = JSON.decode(r);
+                window.currentDocument = DV.load(docUrl, {
+                        container: '#doc3',
+	                width: 980,
+	                height: 800,
+	                sidebar: false,
+	                text: false			
+                });
+                }
+		book.getnotes(id);
+        }
+
+	function createnote() {
+		var content = $('note').value;
+		book.createnote(id,htmlEncode(content));
+	}
+
+	function setText(text) {
+		$('note').set('html',htmlDecode(text));
+	}	
+
+	function getNote(r) {
+		var listnotes = $('listnotes');
+		var htmlCode = "<ul id='posts'>";
+                if(r=='null') { }
+                else {
+                        var obj = JSON.decode(r);
+                        for(i=0; i<obj.length; i++)
+                        htmlCode += "<li onclick=\"setText('"+obj[i].content+"')\">"+obj[i].title+"...</li>";
+                }
+                htmlCode += "</ul>";
+		listnotes.set('html',htmlCode);
+
+
+	}
+
+	function htmlEncode(s) {
+		var el = document.createElement("div");
+		el.innerText = el.textContent = s;
+		s = el.innerHTML;
+		delete el;
+		return s;
+	}
+
+	function htmlDecode(s) {
+		var nl=document.all?String.fromCharCode(13):"\n";
+		return s.replace(/<br>/g, nl);
+	}
+
+        function slide() {
+		mySlide.toggle();
+        }
+	loginListener.onChkstate = updateState;
+	menuListener.onGetmenu = setMenu;
+        bookListener.onGetbook = getBook;
+        bookListener.onCreatenote = getNote;
+	bookListener.onGetnotes = getNote;
+	login.chkstate();
+</script>
+
+<header>
+<h1></h1>
+</header>
+<hr/>
+
+<section id="top">
+        <article id="menu">
+		<aside class="loading"></aside>
+        </article>
+</section>
+
+<section id="notes">
+        <article id="slider">
+                <form method="post" id="form">
+                <textarea id="note" rows="20" cols="80"></textarea>
+                <input class="button" type="submit" value="Guardar" onclick="create_note(); return false;"/>
+                <br /><br />
+                <div id="listnotes"><aside class="loading"></aside></div>
+                </form>
+
+        </article>
+</section>
+
+<!-- To Fix -->
+<aside id="slidebutton">Notas</aside>
+
+<section class="main">
+	<header class="tab">
+		<nav>
+		<ul>
+			<li class="active"><a href="#">Libro</a></li>
+		</ul>
+		</nav>
+	</header>
+	<article class="content">
+		<section>
+			<article id="book">
+				<div id="doc3" style="margin-left: auto; margin-right:auto;">
+					<aside class="loading"></aside>
+				</div>
+			</article>
+		</section>
+	</article>
+<section>
+
+<footer>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<?php
+include("/www/hide.demo.com/adodb5/adodb.inc.php");
+require_once("/www/demo.com/pajax/PajaxRemote.class.php");
+class Book extends PajaxRemote {
+	function Book() {
+		session_start();
+	}
+	function getbooks(){
+		require_once("/www/hide.demo.com/utils/query.php");
+	       	$result = doquery("SELECT * FROM getbooks(".$_SESSION["&user"].")");
+	     	if(!($result))
+	        	return 0;
+		while($row=$result->FetchRow())
+			$combo[]=array("id"=>$row["o_usersbooks_id"],"title"=>$row["o_title"],"author"=>$row["o_author"],"editorial"=>$row["o_editorial"],"description"=>$row["o_description"],"boughtdate"=>$row["o_boughtdate"],"lastvisit"=>$row["o_lastvisit"],"url"=>$row["o_url"]);
+		return json_encode($combo);
+	}
+	function getbook($id){
+		require_once("/www/hide.demo.com/utils/query.php");
+	       	$result = doquery("SELECT * FROM getbook(".$id.")");
+	     	if(!($result))
+	        	return 0;
+		$row=$result->FetchRow();
+		$combo[]=array("id"=>$id,"title"=>$row["o_title"],"author"=>$row["o_author"],"editorial"=>$row["o_editorial"],"description"=>$row["o_description"],"boughtdate"=>$row["o_boughtdate"],"lastvisit"=>$row["o_lastvisit"],"url"=>$row["o_url"]);
+		$rslt="{
+                        \"id\": \"7262-gubernatorial-schedules\",
+                        "title": \"Gubernatorial Schedules\",
+                        "access": "public",
+                        "pages": 106,
+                        "description": "<div class=\"byline\">\n por autor<br>\n editorial\n</div>",
+                        "source": "States of California, Texas, Florida and New York",
+                        "created_at": "Mon, 16 Aug 2010 21:16:52 +0000",
+                        "updated_at": "Wed, 25 May 2011 05:08:58 +0000",
+                        "canonical_url": "book_full.html",
+                        "contributor": "Matt Stiles",
+                        "contributor_organization": "Texas Tribune",
+                        "resources": {
+                                "text": "http://s.demo.com/non.txt",
+                                "thumbnail": "http://s3.documentcloud.org/documents/7262/pages/gubernatorial-schedules-p1-thumbnail.gif",
+                                "search": "http://www.documentcloud.org/documents/7262/search.json?q={query}",
+                                "page": {
+                                        "text": "http://s.demo.com/texts/000001/{page}.txt",
+                                        "image": "http://s.demo.com/books/000001/{page}-{size}.gif"
+                                }
+                        } 
+                },";
+		return json_encode($combo);
+
+	}
+}
+?>

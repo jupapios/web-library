@@ -1,0 +1,12 @@
+#ie6_msg {
+	border: 10px solid #fff;
+	width: 100%;
+	padding: 10px 20px;
+	background: #fc575e;
+	color: #fff;
+	font: bold 18px/24px Arial,Verdana,Helvetica,sans-serif;
+}
+#ie6_msg ul { margin-top: 10px; }
+#ie6_msg ul li { display: inline; margin-left: 33px;} 
+#ie6_msg a { color: #fcd7de; text-decoration: underline;}
+#ie6_msg a:hover { color: #fff; }

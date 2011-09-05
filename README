@@ -1,0 +1,23 @@
+Project: Web Library (Open Source)
+Authors: Juan Pinilla
+	Byran Garzón
+Technologies: pAjax (modified), mooTools, PHP, HTML5, CSS3, Postgresql
+
+Files:
+
+- www:
+	- demo.com: Main web page
+	- s.demo.com: It containts all static content, converted books (biggest files XD)
+	- hide.demo.com: It should not be accessible from internet, just for local access to apache
+- sql
+	- database: Show how to create and configure the postgres database
+	- script.sql: Contents the schema
+	- pl.sql: Contents the plsql functions
+
+TODO
+- Modify pAjax to work with jQuery
+- Use jQuery instead of mooTools
+- Create templates system
+- Create languages support
+- Add support to mysql
+- Create wiki

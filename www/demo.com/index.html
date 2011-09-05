@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Bienvenido</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="shortcut icon" href="images/favicon.ico">
+<script type="text/javascript" src="pajax/pajax_library.js"></script>
+<script type="text/javascript" src="pajax/pajax_import.php?Login"></script>
+</head>
+<body>
+<script type="text/javascript">
+             	var loginListener = new LoginListener();
+                var login = new Login(loginListener);
+        
+                function updateState(r){
+                        if(r=="0")
+                                window.location = "sign.html";
+                        else
+                                window.location = "main.html";
+                }
+                loginListener.onChkstate = updateState;
+                login.chkstate();
+
+</script>
+</body>
+</html>

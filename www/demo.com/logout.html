@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" class="js">
+    <head> 
+        <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+
+        <script type="text/javascript" src="pajax/pajax_library.js"></script>
+        <script type="text/javascript" src="pajax/pajax_import.php?Login"></script>
+        <title>Bienvenido</title>
+        <style>
+                html.js {
+                        display: none;
+                }
+        </style>
+</head>
+<body>
+        <script>
+		var loginListener = new LoginListener();
+                var login = new Login(loginListener);
+
+                function updateLgt(r){
+                	window.location = "index.html";
+                }
+        
+                loginListener.onLogout = updateLgt;
+                login.logout();
+
+	</script>
+
+</body>
+</html>
