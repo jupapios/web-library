@@ -1,7 +1,7 @@
 Project: Web Library (Open Source)
 Authors: Juan Pinilla
 	Byran Garzón
-Technologies: pAjax (modified), mooTools, PHP, HTML5, CSS3, Postgresql
+Technologies: pAjax (modified), mooTools, PHP, HTML5, CSS3, Postgresql, NY Times' Document Viewer
 
 Files:
 
@@ -20,4 +20,7 @@ TODO
 - Create templates system
 - Create languages support
 - Add support to mysql
+- Admin module
+- Script convert.sh - Executable from php
 - Create wiki
+
