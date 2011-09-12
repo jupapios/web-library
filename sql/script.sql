@@ -242,7 +242,7 @@ COMMENT ON COLUMN notes.usersbooks_id IS 'Llave foranea de la tabla users_books'
 COMMENT ON COLUMN notes.lastmodified IS 'Fecha de la ultima modificiacion a la nota';
 
 
-INSERT INTO books(title,author,description,isbn, editorial,pages,url) VALUES('Professional Linux Programming','Jon Masters, Richard Blum','Test descripcion','978-0-471-77613-0','Wiley Publishing, Inc',507,'000001');
+INSERT INTO books(title,author,description,isbn, editorial,pages,url) VALUES('Guía de aprendizaje de Python','Guido van Rossum','Test descripcion','--','--',77,'000001');
 
 /*INSERT INTO books(title,author,description,isbn, editorial,pages,url) VALUES('RMAN Recipes for Oracle Database 11g','Tammy FoxDarl Kuhn, Sam Alapati, Arup Nanda','Test descripcion','978-1-59059-851-1','Apress',704,'000003');
 

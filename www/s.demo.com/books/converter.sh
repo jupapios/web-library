@@ -31,8 +31,8 @@ then
 		    rm "$dff".gif
 		done
 	else
-		echo "Ingrese el nombre del archivo a convertir"
+		echo "Ingrese el nombre del archivo a convertir Ex: converter.sh 000001 000001.pdf"
 	fi
 else
-	echo "Ingrese el directorio donde van a quedar las imagenes"
+	echo "Ingrese el directorio donde van a quedar las imagenes Ex: converter.sh 000001 000001.pdf"
 fi
