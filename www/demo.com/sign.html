@@ -1,221 +1,157 @@
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" class="js">
-    <head> 
-        <title>Bienvenido</title> 
-     	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
-	<link rel="shortcut icon" href="images/favicon.ico">
-       	<!--[if lt IE 9]>
-        	<script type="text/javascript">window.location="error.html";</script>
-        <![endif]-->
-        <link rel="stylesheet" type="text/css" href="css/main.css" />
-	<script type="text/javascript" src="js/mootools-1.3.2.js"></script>
-	<script type="text/javascript" src="js/min.js"></script>
-	<script type="text/javascript" src="pajax/pajax_library.js"></script>
-	<script type="text/javascript" src="pajax/pajax_import.php?Login"></script>
-	<script type="text/javascript">
-		window.addEvent('domready',function() {
-			Element.implement({
-				//implement show
-				fancyShow: function() {
-					this.fade('in');
-				},
-				//implement hide
-				fancyHide: function() {
-					this.fade('out');
-				},
-				//implement show
-				show: function() {
-					this.setStyle('display','');
-				},
-				//implement hide
-				hide: function() {
-					this.setStyle('display','none');
-				}
-			});
-			$('box_register').fancyHide();
-			$('box_forgot').fancyHide();
-			//settings
-			var duration = 40000;
-			var length = 2000;
-			var count = 0;
-			var tweener;
-			// Executes the standard tween on the background position
-			var run = function() {
-				tweener.tween('background-position','-' + (++count * length) + 'px 0px');
-
-			};
-			// Defines the tween
-			tweener = $('animate-area').setStyle("background-position","0px 0px").set('tween',{ 
-				duration: duration, 
-				transition: Fx.Transitions.linear,
-				onComplete: run,
-				wait: false
-			});
-			// Starts the initial run of the transition
-			run();
-
-		});
-	</script>
-	<title>Bienvenido</title>
-	<style>
-		.js {
-			display: none;
-		}
-	</style>
-        <style type="text/css">
-                .cloud {
-                        position: absolute;
-                        top: 38%;
-                        right: 200px;
-                        width: 140px;
-                        height: 95px;
-                        background-image:url('images/cloud.png');
-                        background-repeat:no-repeat
-                }
-        </style>
-
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js hide" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Bienvenido</title>
+  <meta name="description" content="Web Library">
+  <meta name="author" content="Juan Pinilla, Bryan Garzon">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/libs/modernizr-2.0.6.min.js"></script>
 </head>
+
 <body>
-	<script>
-		function showRegister() {
-			$('box_register').removeClass('js');
-			$('box_login').fancyHide();
-			$('box_forgot').fancyHide();
-			$('box_register').fancyShow();
-		}
 
-		function showLogin() {
-			$('box_forgot').fancyHide();
-			$('box_register').fancyHide()
-			$('box_login').fancyShow();
-		}
+  <div id="container">
+    <header>
+	<h1></h1>
+	<hr />
+    </header>
+    <div id="main" role="main">
+			<div class="cloud"></div>
+			<section id="control">
+				<article id="box_login">
+        	<form method="post">
+          	<nav id="label1" class="label">Email</nav>
+            <input class="rounded" id="field0_1" type="email" required>
 
-		function showForgot() {
-			$('box_forgot').removeClass('js');
-			$('box_register').fancyHide()
-			$('box_login').fancyHide();
-			$('box_forgot').fancyShow();
-		}
-		var loginListener = new LoginListener();
-		var login = new Login(loginListener);
-		var names,user,pass;
+						<nav id="label2" class="label">Contraseña</nav>
+						<input class="rounded" id="field0_2" type="password" required>
+
+						<input class="button" onclick="sign_in()" type="submit" value="Ingresar" />
+						<div id="forgot1" class="forgot">
+							<a>Olvidé mi contraseña</a>
+						</div>
+					</form>
+				<section class="flagpole">
+        	<header class="title">Accede</header>
+        	<article class="link register">o <a rel="nofollow">registrate</a></article>
+      	</section>
+			</article>
+	    <article id="box_register" class="hide">
+      	<form method="post">
+        	<nav id="label0" class="label">Nombre</nav>
+          <input class="rounded" id="field1_0" type="text" required>
+
+          <nav id="label1" class="label">Email</nav>
+          <input class="rounded" id="field1_1" type="email" required>
+
+        	<nav id="label2" class="label">Contrasña</nav>
+        	<input class="rounded" id="field1_2" type="password" required>
+
+        	<input class="button" onclick="sign_up()" type="submit" value="Registrar" />
+        	<div id="forgot1" class="forgot">
+          	<a>Olvidé mi contraseña</a>
+        	</div>
+      	</form>
+      	<section class="flagpole">
+        	<header class="title">Registro</header>
+        	<article class="link enter">o <a rel="nofollow">accede</a></article>
+      	</section>
+    	</article>
+    	<article id="box_forgot" class="hide">
+      	<form method="post">
+        	<nav id="label1" class="label">Email</nav>
+          <input class="rounded" id="field2_0" type="email" required>
+
+        	<input class="button" onclick="forgot_pass(); return false;" type="submit" value="Recordar" />
+      	</form>
+      	<section class="flagpole">
+        	<header class="title">Olvidé</header>
+        	<article class="link enter">o <a rel="nofollow">accede</a></article>
+        	<article class="link register">o <a rel="nofollow">registrate</a></article>
+      	</section>
+    	</article>
+		</section>
+    </div>
+    <footer>
+	    <div id="animated-area"></div>
+    </footer>
+  </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.3.min.js"><\/script>')</script>
+  <script defer src="js/plugins.js"></script>
+  <script defer src="js/sign.js"></script>
+  <script src="pajax/pajax_library.js"></script>
+  <script src="pajax/pajax_import.php?Login"></script>
+  <script>
+    var loginListener = new LoginListener();
+    var login = new Login(loginListener);
+    var names,user,pass;
 
 		function updateCB(r){
-                        if(r!="0")
-                                window.location = "main.html";
-                        else
-                                $$('html').removeClass('js');
-		}
-	
-		function updateState(r){
+    	if(r!="0")
+    		window.location = "main.html";
+    	else
+      	$('html').removeClass('hide');
+    }
+  
+    function updateState(r){
+      if(r=="1")
+        window.location = "main.html";
+      else
+        $('html').removeClass('hide');
+    }
 
-			if(r=="1")
-				window.location = "main.html";
-			else
-				$$('html').removeClass('js');
-		}
+    function updateRegister(r) {
+      if(r=="0") {
+        $('#field1_1').addClass('rounded_error');
+        alert("Usuario " + user + " ya registrado");
+      } else {
+        alert("Gracias, "+ names);
+        window.location = "sign.html";
+      }
+    }
+    loginListener.onChkstate = updateState;
+    loginListener.onDologin = updateCB;
+    loginListener.onDoregister = updateRegister;
 
-		function updateRegister(r) {
-			if(r=="0") {
-				$('field1_1').addClass('rounded_error');
-				alert("Usuario " + user + " ya registrado");
-			} else {
-				alert("Gracias, "+ names);
-				window.location = "sign.html";
-			}
-		}
-		loginListener.onChkstate = updateState;
-		loginListener.onDologin = updateCB;
-		loginListener.onDoregister = updateRegister;
+    function getValuesLogin() {
+      user = $('#field0_1').val();
+      pass = $('#field0_2').val();
+    }
+    
+    function getValuesRegister() {
+      names = $('#field1_0').val();
+      user = $('#field1_1').val();
+      pass = $('#field1_2').val();
+    }
 
-		function getValuesLogin() {
-			user = $('field0_1').value;
-			pass = $('field0_2').value;
-		}
-		
-		function getValuesRegister() {
-			names = $('field1_0').value;
-			user = $('field1_1').value;
-			pass = $('field1_2').value;
-		}
-
-		function dologin() {
-			getValuesLogin();	
-			login.dologin(user,pass);
-		}
-		function doregister() {
-			getValuesRegister();	
-			login.doregister(names,user,pass);
-		}
-		login.chkstate();
-	</script>
-
-	<header>
-		<h1></h1>
-	</header>
-	<hr />
-
-        <div class="cloud">
-        </div>
-
-	<section id="control">
-		<article id="box_login">
-	    		<form method="post" id="form">
-	        		<nav id="label1" class="label">Email</nav> 
-	        		<input class="rounded" id="field0_1" type="email" required>
-	 
-				<nav id="label2" class="label">Contrase&#241;a</nav>
-				<input class="rounded" id="field0_2" type="password" required>
-	
-				<input class="button" onclick="sign_in(); return false;" type="submit" value="Ingresar" /> 
-				<div id="forgot1" class="forgot"> 
-					<a href="javascript:showForgot();">Olvid&#233; mi contrase&#241;a</a> 
-				</div>
-			</form> 
-			<section id="flagpole">
-				<header id="title">Accede</header>
-				<article id="register">o <a href="javascript:showRegister();" rel="nofollow">registrate</a></article>
-			</section>
-		</article>
-		<article id="box_register" class="js">
-	    		<form method="post" id="form">
-	        		<nav id="label0" class="label">Nombre</nav> 
-	        		<input class="rounded" id="field1_0" type="text" required>
-
-	        		<nav id="label1" class="label">Email</nav> 
-	        		<input class="rounded" id="field1_1" type="email" required>
-	 
-				<nav id="label2" class="label">Contrase&#241;a</nav>
-				<input class="rounded" id="field1_2" type="password" required>
-	
-				<input class="button" onclick="sign_up(); return false;" type="submit" value="Registrar" /> 
-				<div id="forgot1" class="forgot"> 
-					<a href="javascript:showForgot();">Olvid&#233; mi contrase&#241;a</a> 
-				</div>
-			</form> 
-			<section id="flagpole">
-				<header id="title">Registro</header>
-				<article id="register">o <a href="javascript:showLogin();" rel="nofollow">accede</a></article>
-			</section>
-		</article>
-		<article id="box_forgot" class="js">
-	    		<form method="post" id="form">
-	        		<nav id="label1" class="label">Email</nav> 
-	        		<input class="rounded" id="field2_0" type="email" required>
-
-				<input class="button" onclick="forgot_pass(); return false;" type="submit" value="Recordar" /> 
-			</form> 
-			<section id="flagpole">
-				<header id="title">Olvid&#233;</header>
-				<article id="register">o <a href="javascript:showLogin();" rel="nofollow">accede</a></article>
-				<article id="register">o <a href="javascript:showRegister();" rel="nofollow">registrate</a></article>
-			</section>
-		</article>
-	</section>
-
-	<footer>
-		<div id="animate-area">
-		</div>
-	</footer>
+    function dologin() {
+      getValuesLogin(); 
+      login.dologin(user,pass);
+    }
+    function doregister() {
+      getValuesRegister();  
+      login.doregister(names,user,pass);
+    }
+    login.chkstate();
+  </script>
+  <script>
+    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview'],['_trackPageLoadTime']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+  <!--[if lt IE 7 ]>
+    <script defer src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script defer>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
 </body>
 </html>

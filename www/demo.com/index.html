@@ -1,15 +1,25 @@
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-<title>Bienvenido</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<link rel="shortcut icon" href="images/favicon.ico">
-<script type="text/javascript" src="pajax/pajax_library.js"></script>
-<script type="text/javascript" src="pajax/pajax_import.php?Login"></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Bienvenido</title>
+  <meta name="description" content="Web Library">
+  <meta name="author" content="Juan Pinilla, Bryan Garzon">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 <body>
-<script type="text/javascript">
-             	var loginListener = new LoginListener();
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.3.min.js"><\/script>')</script>
+
+  <script src="pajax/pajax_library.js"></script>
+  <script src="pajax/pajax_import.php?Login"></script>
+  <script>
+                var loginListener = new LoginListener();
                 var login = new Login(loginListener);
         
                 function updateState(r){
@@ -20,7 +30,16 @@
                 }
                 loginListener.onChkstate = updateState;
                 login.chkstate();
-
-</script>
+  </script>
+  <script>
+    var _gaq=[['_setAccount','UA-25558977-1'],['_trackPageview'],['_trackPageLoadTime']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+  <!--[if lt IE 7 ]>
+    <script defer src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script defer>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
 </body>
 </html>
