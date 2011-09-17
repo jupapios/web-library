@@ -13,7 +13,7 @@ class Menu extends PajaxRemote {
 	                $row=$result->FetchRow();
 	                $rslt="<nav>
 				<ul class='parentmenu'>
-			        <li><img src='images/portraits/d.30.jpg' id='menudo_portrait' width='24' height='24' alt='Usuario'/></li>
+			        <li><img src='img/portraits/d.30.jpg' id='menudo_portrait' width='24' height='24' alt='Usuario'/></li>
 	
 			        <li>
 			        <a class='label'>".$row['o_name']."</a>

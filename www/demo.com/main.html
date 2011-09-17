@@ -1,92 +1,101 @@
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" class="js">
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-<title>Bienvenido</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<link rel="shortcut icon" href="images/favicon.ico">
-<link rel="stylesheet" type="text/css" media="all" href="css/main.css"/>
-<link rel="stylesheet" type="text/css" media="all" href="css/body.css"/>
-<!--[if lt IE 9]>
-        	<script type="text/javascript">window.location="error.html";</script>
-<![endif]-->
-<script type="text/javascript" src="js/mootools-1.3.2.js"></script>
-<script type="text/javascript" src="js/twitter.js"></script>
-<script type="text/javascript" src="js/min.js"></script>
-<script type="text/javascript" src="pajax/pajax_library.js"></script>
-<script type="text/javascript" src="pajax/pajax_import.php?Login"></script>
-<script type="text/javascript" src="pajax/pajax_import.php?Menu"></script>
-<style>
-	html.js {
-		display: none;
-	}
-</style>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Bienvenido</title>
+  <meta name="description" content="Web Library">
+  <meta name="author" content="Juan Pinilla, Bryan Garzon">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/libs/modernizr-2.0.6.min.js"></script>
 </head>
+
 <body>
-<script>
-	var loginListener = new LoginListener();
-	var login = new Login(loginListener);
-	var menuListener = new MenuListener();
-	var menu = new Menu(menuListener);
 
-	function updateState(r){
-	        if(r=="0")
-	                window.location = "index.html";
-	        else
-			menu.getmenu();
-	}
-	function setMenu(r){
-	        $('menu').set('html', r);
-	        $$('html').removeClass('js');
-	}
-	loginListener.onChkstate = updateState;
-	menuListener.onGetmenu = setMenu;
-	login.chkstate();
+  <div id="container">
+    <header>
+			<h1></h1>
+			<hr />
+    </header>
+    <div id="main" role="main">
+			<section id="top">
+				<article id="menu">
+					<aside class="loading"></aside>
+				</article>
+			</section>
+			<section class="main">
+				<header class="tab">
+					<nav>
+						<ul>
+							<li class="active"><a href="#">Inicio</a></li>
+						</ul>
+					</nav>
+				</header>
+				<article class="content">
+					<section>
+						<header>Bienvenido<br /><br /></header>
+						<article id="news">
+							<aside class="loading"></aside>
+						</article>
+					</section>
+				</article>
+			<section>
+    </div>
+    <footer>
+    </footer>
+  </div>
 
-	getTwitters('news', {
-	        id: 'gotiktraum',
-	        count: 10,
-	        enableLinks: true,
-	        ignoreReplies: true,
-	        clearContents: true,
-	        template: '<div class="post">%text%<div class="post-content">%time%<br /><a href="http://twitter.com/%user_screen_name%/statuses/%id_str%/" class="post-more">Leer más...</a></div>'
-	});
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.3.min.js"><\/script>')</script>
+  <script defer src="js/plugins.js"></script>
+  <script src="js/twitter.js"></script>
+  <script src="pajax/pajax_library.js"></script>
+  <script src="pajax/pajax_import.php?Login"></script>
+  <script src="pajax/pajax_import.php?Menu"></script>
+  <script>
+  var loginListener = new LoginListener();
+  var login = new Login(loginListener);
+  var menuListener = new MenuListener();
+  var menu = new Menu(menuListener);
 
-</script>
+  function updateState(r){
+          if(r=="0")
+                  window.location = "index.html";
+          else
+      menu.getmenu();
+  }
+  function setMenu(r){
+          $('#menu').html(r);
+          $('html').removeClass('hide');
+  }
+  loginListener.onChkstate = updateState;
+  menuListener.onGetmenu = setMenu;
+  login.chkstate();
 
-<header>
-<h1></h1>
-</header>
-<hr/>
+  getTwitters('news', {
+          id: 'gotiktraum',
+          count: 10,
+          enableLinks: true,
+          ignoreReplies: true,
+          clearContents: true,
+          template: '<div class="post">%text%<div class="post-content">%time%<br /><a href="http://twitter.com/%user_screen_name%/statuses/%id_str%/" class="post-more">Leer más...</a></div>'
+  });
 
-<section id="top">
-        <article id="menu">
-<aside class="loading"></aside>
-        </article>
-</section>
-
-<section class="main">
-	<header class="tab">
-		<nav>
-		<ul>
-			<li class="active"><a href="#">Inicio</a></li>
-		</ul>
-		</nav>
-	</header>
-	<article class="content">
-		<section>
-			<header>
-				Bienvenido<br /><br />
-			</header>
-
-			<article id="news">
-				<aside class="loading"></aside>
-			</article>
-		</section>
-	</article>
-<section>
-
-<footer>
-</footer>
-
+  </script>
+  <script>
+    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview'],['_trackPageLoadTime']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+  <!--[if lt IE 7 ]>
+    <script defer src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script defer>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
 </body>
 </html>
