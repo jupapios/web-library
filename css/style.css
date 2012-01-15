@@ -57,7 +57,7 @@ td { vertical-align: top; }
 header h1 {
   height: 80px;
   width: 100%;
-  background: url(/img/logo.gif) no-repeat;
+  background: url(../img/logo.gif) no-repeat;
   margin: 0;
   text-align: left;
 }
